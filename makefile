@@ -2,11 +2,7 @@
 
 export PKGS=$(shell go list ./... | grep -v vendor/)
 
-all:
-	build test 
 
-build:
-	build-server-for-linux
 build-server-for-linux:
 	@echo "Building server for linux..."
 	@export GOOS=linux GOARCH=amd64
@@ -15,7 +11,7 @@ build-server-for-linux:
 
 build-server-for-windows:
 	@echo "Building server for windows..."
-	@GOOS=windows GOARCH=amd64
+	@GOOS=windows GOARCH=386
 	@go build -o ./bin/windows/server.exe server.go
 	@echo "Done."
 
@@ -35,7 +31,7 @@ build-client-for-linux:
 
 build-client-for-windows:
 	@echo "Building client for windows..."
-	@GOOS=windows GOARCH=amd64
+	@GOOS=windows GOARCH=386
 	@go build -o ./bin/windows/client.exe ./client/client.go
 	@echo "Done."
 
