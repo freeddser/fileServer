@@ -7,3 +7,6 @@
   
 #### Client
     ./client.go --server http://127.0.0.1:5050 --filename a.txt
+
+#### use curl upload file
+    curl  -F "file=@/var/log/syslog" "localhost:5050/upload?name=abc"
